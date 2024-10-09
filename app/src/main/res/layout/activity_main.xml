@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
 
         app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/item_usuario" />
+        tools:listitem="@layout/item_posts" />
 
     <LinearLayout
         android:id="@+id/buttonLayout"
@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:weightSum="4">
 
-        <!-- Botón Buscar con texto más pequeño y menos padding -->
+        <!-- Botón Buscar-->
         <Button
             android:id="@+id/btnBuscar"
             android:layout_width="0dp"

@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CL2_NaomiYumbato"
         tools:targetApi="31">
+        <activity android:name=".CreatePost" />
+        <activity android:name=".UpdatePost" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
