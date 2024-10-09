@@ -21,7 +21,7 @@ class UpdatePost : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = UpdatePostBinding.inflate(layoutInflater)
-        setContentView(binding.root) // Usar View Binding para establecer la vista
+        setContentView(binding.root)
 
         apiService = Retrofit.Builder()
             .baseUrl("https://jsonplaceholder.typicode.com/")
@@ -35,13 +35,11 @@ class UpdatePost : AppCompatActivity() {
         val title = intent.getStringExtra("title") ?: ""
         val body = intent.getStringExtra("body") ?: ""
 
-        // Inicializar los EditTexts con los valores recibidos
         binding.etUserId.setText(userId.toString())
-        binding.etId.setText(postId.toString()) // Aquí debería ser postId
+        binding.etId.setText(postId.toString())
         binding.etTitle.setText(title)
         binding.etBody.setText(body)
 
-        // Configurar el botón de actualización
         binding.btnSubmit.setOnClickListener {
             updatePost(postId)
         }
@@ -52,13 +50,13 @@ class UpdatePost : AppCompatActivity() {
     }
 
     private fun updatePost(postId: Int) {
-        val userId = binding.etUserId.text.toString().toInt() // Obtener userId del EditText
+        val userId = binding.etUserId.text.toString().toInt()
         val title = binding.etTitle.text.toString()
         val body = binding.etBody.text.toString()
 
         val post = Posts().apply {
             setUserId(userId)
-            setId(postId) // Aquí usamos postId
+            setId(postId)
             setTitle(title)
             setBody(body)
         }
@@ -67,7 +65,7 @@ class UpdatePost : AppCompatActivity() {
             override fun onResponse(call: Call<Posts>, response: Response<Posts>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@UpdatePost, "Post actualizado exitosamente", Toast.LENGTH_SHORT).show()
-                    finish() // Regresar a la actividad anterior
+                    finish()
                 } else {
                     Toast.makeText(this@UpdatePost, "Error: ${response.errorBody()?.string()}", Toast.LENGTH_SHORT).show()
                 }
